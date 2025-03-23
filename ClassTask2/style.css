@@ -1,0 +1,20 @@
+table, th, td {
+    border: 1px solid rebeccapurple;
+    width: 250px;
+    border-collapse: collapse;
+}
+td {
+    height: 50px;
+    text-align: center;
+    padding: 10px;
+}
+tr:nth-child(odd) {
+    background-color:  #b3e6ff;
+}
+th {
+    background-color: rgba(238, 205, 219, 0.495);
+}
+.png{
+    height: 60px;
+    width: 60px;
+}
