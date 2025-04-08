@@ -2,19 +2,85 @@
 <html>
 <head>
     <title>File</title>
+    <script>
+        function validateForm() {
+            var fname = document.getElementById("fname").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm_password").value;
+            var location = document.getElementById("location").value;
+            var zip = document.getElementById("zip").value;
+            var city = document.getElementById("city").value;
+            var terms = document.getElementById("terms").checked;
+
+            var namePattern = /^[A-Za-z\s]+$/;
+            var zipPattern = /^\d+$/;
+
+            if (fname == "") {
+                alert("Full Name must be filled out");
+                return false;
+            }
+            if (!namePattern.test(fname)) {
+                alert("Invalid Name");
+                return false;
+            }
+            if (email == "") {
+                alert("Email must be filled out");
+                return false;
+            }
+            if (!email.includes("@")) {
+                alert("Please enter a valid email address");
+                return false;
+            }
+            if (password == "") {
+                alert("Missing Password");
+                return false;
+            }
+            if (confirmPassword == "") {
+                alert("Please confirm your password");
+                return false;
+            }
+            if (password !== confirmPassword) {
+                alert("Passwords do not match");
+                return false;
+            }
+            if (location == "") {
+                alert("Location must be filled out");
+                return false;
+            }
+            if (zip == "") {
+                alert("Zip Code must be filled out");
+                return false;
+            }
+            if (!zipPattern.test(zip)) {
+                alert("Invalid Zip Code");
+                return false;
+            }
+            if (city == "") {
+                alert("Please select a city");
+                return false;
+            }
+            if (!terms) {
+                alert("You must agree to the terms and conditions");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </head>
 <body>
-    <h1 style="text-align: center;">TITLE</h1>
+    <h1 style="text-align: center;">Air Quality Index</h1>
     <div style="border: 1px solid black; width: 100%; height: 700px; position: relative; display: flex; box-sizing: border-box;">
-        <div style="width: 50%; display: flex; flex-direction: column; border-right: 1px solid black;">
-            <div style="border: 1px solid black; width: 100%; height: 350px; display: flex; align-items: center; justify-content: center;">Box 1</div>
-            <div style="border: 1px solid black; width: 100%; height: 350px; display: flex; align-items: center; justify-content: center;">Box 2</div>
+        <div style="width: 50%; display: flex; flex-direction: column; border-right: 1px solid black; background-color: lightblue;">
+            <div style="border: 1px solid black; width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; background-color: lightgreen;">Box 1</div>
+            <div style="border: 1px solid black; width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; background-color: lightyellow;">Box 2</div>
         </div>
 
-        <div style="width: 50%; display: flex; flex-direction: column; justify-content: flex-end;">
-            <div style="border: 1px solid black; width: 100%; height: 60%; display: flex; align-items: center; justify-content: center;">
-                <form>
-                    <label for="fname">Full Name</label><br>
+        <div style="width: 50%; display: flex; flex-direction: column; justify-content: flex-end; background-color: lightcoral;">
+            <div style="border: 1px solid black; width: 100%; height: 60%; display: flex; align-items: center; justify-content: center; background-color: lightgray;">
+                <form onsubmit="return validateForm()">
+                    <label for="fname">F Name</label><br>
                     <input type="text" id="fname" name="fname"><br>
                     
                     <label for="email">E-mail</label><br>
@@ -34,11 +100,14 @@
                     
                     <label for="city">Preferred City</label><br>
                     <select id="city" name="city">
+                        <option value="">Select City</option>
                         <option value="dhaka">Dhaka</option>
                         <option value="ctg">Chattagram</option>
                         <option value="khulna">Khulna</option>
                         <option value="rangpur">Rangpur</option>
                         <option value="rajshahi">Rajshahi</option>
+                        <option value="rajshahi">Barishal</option>
+                        <option value="rajshahi">Comilla</option>
                     </select><br>
                     
                     <input type="checkbox" id="terms" name="terms">
@@ -48,8 +117,10 @@
                 </form>
             </div>
             
-            <div style="border: 1px solid black; width: 100%; height: 40%; display: flex; align-items: center; justify-content: center;">Box 4</div>
+            <div style="border: 1px solid black; width: 100%; height: 40%; display: flex; align-items: center; justify-content: center; background-color: lightpink;">Box 4</div>
         </div>
     </div>
 </body>
 </html>
+
+
