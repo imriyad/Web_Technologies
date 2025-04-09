@@ -24,14 +24,17 @@
                 alert("Invalid Name");
                 return false;
             }
-            if (email == "") {
-                alert("Email must be filled out");
-                return false;
-            }
-            if (!email.includes("@")) {
-                alert("Please enter a valid email address");
-                return false;
-            }
+            if (email === "") {
+        alert("Email must be filled out");
+        return false;
+    }
+
+    const pattern = /^\d{2}-\d{5}-[1-3]@students\.aiub\.edu$/;
+
+    if (!pattern.test(email)) {
+        alert("Please enter a valid AIUB student email (e.g., 22-12345-1@students.aiub.edu)");
+        return false;
+    }
             if (password == "") {
                 alert("Missing Password");
                 return false;
@@ -80,7 +83,7 @@
         <div style="width: 50%; display: flex; flex-direction: column; justify-content: flex-end; background-color: lightcoral;">
             <div style="border: 1px solid black; width: 100%; height: 60%; display: flex; align-items: center; justify-content: center; background-color: lightgray;">
                 <form onsubmit="return validateForm()">
-                    <label for="fname">F Name</label><br>
+                    <label for="fname">f Name</label><br>
                     <input type="text" id="fname" name="fname"><br>
                     
                     <label for="email">E-mail</label><br>
