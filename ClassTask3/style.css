@@ -1,0 +1,55 @@
+head{
+    background-color: antiquewhite;
+
+}
+body{
+    background-color: aquamarine;
+    font-family: Arial, Helvetica, san-serif;
+	font-size: 16px; 
+	font-weight: normal;
+    
+
+}
+.container{
+    width:80%;
+    margin:auto;
+    padding: 10px;
+}
+.box-1{
+    background-color: blue;
+    padding: 20px;
+}
+.box-2{
+    background-color: blueviolet;
+}
+.box-1 h1{
+    color: aqua;
+}
+.item ul{
+    padding: 15px;
+    padding-left: 20px;
+    list-style-type: none;
+}
+.block {
+	float:left;
+	width: 30%;
+	border: 1.5px green dotted;
+	
+}
+.block p,h3{
+	padding: 15px;
+}
+.main-block {
+	float: left;
+	width: 60%;
+	padding: 15px;
+	box-sizing: border-box;
+    background-color: aliceblue;
+}
+.sidebar {
+	float: right;
+	width: 40%;
+	padding: 15px;
+	box-sizing: border-box;
+    background-color: yellow;
+}
