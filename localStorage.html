@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Demo</title>
+</head>
+<body>
+        <h1>JS Demo</h1>
+        <input type="text" id="uname" placeholder="Name">
+        <button type="button" id="button" onclick="callMe()">Click Me</button>
+        <h3 id="content">NULL</h3>
+        <script>
+            const uname = document.getElementById('uname'); // full element
+            function callMe() {
+                  document.getElementById('content').innerHTML = "Hello " + uname.value;
+                  localStorage.setItem('uname', uname.value);
+            } // + means concatination
+        </script>
+        <a href="page.html">PAGE</a>
+</body>
+</html>
