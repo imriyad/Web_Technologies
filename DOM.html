@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+    button {
+  background: #FF4742;
+  color: white;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;}
+    </style>
+</head>
+<body>      
+              <div id="house">
+                    <p></p>
+                    <p></p>
+                    <p></p>
+              </div>  
+
+              <button type="button" id="button1">Button1</button>
+              <button type="button" id="button2">Button2</button>
+              <button type="button" id="button3">Button3</button>
+
+              <p>right click then inspect</p>
+
+        <script>
+                let x = document.getElementById("house");
+                let bt1 = document.getElementById("button1");
+                let bt2 = document.getElementById("button2");
+                let bt3 = document.getElementById("button3");
+
+                bt1.addEventListener('click', ()=>{
+                    console.log(x);
+                });             
+                bt2.addEventListener('click', ()=>{
+                    let roomExtra = document.createElement("p");
+                    x.appendChild(roomExtra);
+                    console.log("Added");
+                });
+                bt3.addEventListener('click', ()=>{
+                   let rooms = document.querySelectorAll("p");
+                   x.removeChild(rooms[0]);
+                   console.log("Removed");
+                })
+        </script>        
+</body>
+</html>

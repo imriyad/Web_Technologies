@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prompt</title>
+    <title>PROMT BOX</title>
 </head>
 <body>
-    <h1 id="data">js demo</h1>
+    <h1 id="data">JS DEMO</h1>
 
-    
     <script>
+        // 
         let x =  prompt("AGE?");
-        
+        if (x < 18) {
+            document.getElementById('data').innerHTML="BLOCKED";
+        }
+        else  document.getElementById('data').innerHTML="GRANTED";
     </script>
-    
 </body>
 </html>

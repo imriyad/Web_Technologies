@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DEMO</title>
+</head>
+<body>
+    
+        <script>
+            var Person1= {
+                fname : "John"
+            };
+
+            Object.defineProperty(Person1, "lname", {
+                value : "De",
+                writable: true, //descriptor
+                configurable: false
+            });
+            Person1.lname = "SARAH";     //it will not take the updated value if the writable is false
+            delete Person1.lname;        //delete will not work if the configurable is false
+            console.log(Person1.lname);
+        </script>
+</body>
+</html>

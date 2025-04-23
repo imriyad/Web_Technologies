@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DEMO</title>
+</head>
+<body>
+    <h1>JS OBJECTS USING CONSTRUCTOR</h1>
+
+    <script>
+        function Person (fname, lname, age) {
+            this.fname = fname,
+            this.lname = lname,
+            this.age = age,
+            this.greeting = function() {
+                alert('hi');
+            }
+        };
+        person1 = new Person("John", "Doe", 25);
+        person2 = new Person("Jane", "Doe", 19);
+
+        person1.location = "Kuratoli";
+
+        console.log(person1.location);
+        console.log(person1.fname);
+        console.log(person2.age);
+
+
+        console.log(person1.greeting());
+        
+    </script>
+</body>
+</html>

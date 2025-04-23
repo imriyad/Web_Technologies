@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DEMO</title>
+</head>
+<body>
+    <script>
+        var Person1 = {
+            fname: "John",
+            lname: "Doe",
+            status: true,
+            age: 25,
+            hike : function (loc) {
+                return "Goes to hiking at "+this.location + " of "+loc+" thana";
+            }, 
+            get gfname() {
+                return this.fname;
+            }     
+        };
+
+        Person1.location = "Kuratoli";
+
+        Person1.myMethod1 = function () {alert('M2');}
+
+        console.log(Person1.fname); 
+        console.log(Person1.location); 
+       console.log(Person1.hike("Vatara"));
+      Person1.myMethod1();
+     console.log(Person1.gfname);
+
+
+    </script>
+</body>
+</html>
