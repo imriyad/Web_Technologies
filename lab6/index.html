@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f7;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 10px 0 20px 0;
+            font-size: 32px;
+            color: #333;
+        }
+
+        .white-box {
+            background-color: #fff;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+
+        label {
+            font-weight: 600;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .error {
+            color: red;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        button {
+            width: 130px;
+            height: 40px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .wrapper {
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            border: 1px solid #ddd;
+            width: 100%;
+            height: 700px;
+            display: flex;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .left {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #eee;
+        }
+
+        .box1 {
+            border-bottom: 1px solid #eee;
+            height: 50%;
+            background-color: #e6f7ff;
+            overflow-y: auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .box1 table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .box1 th, .box1 td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .box1 th {
+            background-color: #d9f0ff;
+            font-weight: bold;
+            color: #333;
+            position: sticky;
+            top: 0;
+        }
+
+        .box2 {
+            border-bottom: 1px solid #eee;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            background-color: #fff3cd;
+        }
+
+        .right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box3 {
+            border-bottom: 1px solid #eee;
+            height: 60%;
+            padding: 25px;
+            overflow-y: auto;
+            background-color: #e2ffe6;
+        }
+
+        .box4 {
+            height: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            background-color: #ffe6e6;
+        }
+
+        .box3::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .box3::-webkit-scrollbar-thumb {
+            background: #bbb;
+            border-radius: 5px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        input[type="checkbox"] {
+            display: inline-block;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        label[for="terms"] {
+            display: inline;
+            font-weight: normal;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+            object-fit: contain;
+            max-height: 100px;
+        }
+    </style>
+
+    <script>
+        function clearErrors() {
+            let errors = document.querySelectorAll('.error');
+            errors.forEach(e => e.innerHTML = "");
+        }
+
+        function validateForm() {
+            clearErrors();
+
+            let valid = true;
+
+            const fname = document.getElementById("fname").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
+            const location = document.getElementById("location").value;
+            const zip = document.getElementById("zip").value;
+            const city = document.getElementById("city").value;
+            const terms = document.getElementById("terms").checked;
+
+            const namePattern = /^[A-Za-z.\s]+$/;
+            const zipPattern = /^\d{4}$/;
+            const aiubEmailPattern = /^\d{2}-\d{5}-[1-3]@student\.aiub\.edu$/;
+
+            if (fname.trim() === "") {
+                document.getElementById("fnameError").innerHTML = "Full Name must be filled out";
+                valid = false;
+            } else if (!namePattern.test(fname)) {
+                document.getElementById("fnameError").innerHTML = "Invalid Name";
+                valid = false;
+            }
+
+            if (email.trim() === "") {
+                document.getElementById("emailError").innerHTML = "Email must be filled out";
+                valid = false;
+            } else if (!aiubEmailPattern.test(email)) {
+                document.getElementById("emailError").innerHTML = "Enter a valid AIUB student email (e.g., 22-12345-1@student.aiub.edu)";
+                valid = false;
+            }
+
+            if (password === "") {
+                document.getElementById("passwordError").innerHTML = "Missing Password";
+                valid = false;
+            } else if (password.length < 8) {
+                document.getElementById("passwordError").innerHTML = "Password must be at least 8 characters";
+                valid = false;
+            }
+
+            if (confirmPassword === "") {
+                document.getElementById("confirmPasswordError").innerHTML = "Please confirm your password";
+                valid = false;
+            } else if (password !== confirmPassword) {
+                document.getElementById("confirmPasswordError").innerHTML = "Passwords do not match";
+                valid = false;
+            }
+
+            if (location.trim() === "") {
+                document.getElementById("locationError").innerHTML = "Location must be filled out";
+                valid = false;
+            }
+
+            if (zip.trim() === "") {
+                document.getElementById("zipError").innerHTML = "Zip Code must be filled out";
+                valid = false;
+            } else if (!zipPattern.test(zip)) {
+                document.getElementById("zipError").innerHTML = "Zip Code must be exactly 4 digits";
+                valid = false;
+            }
+
+            if (city === "") {
+                document.getElementById("cityError").innerHTML = "Please select a city";
+                valid = false;
+            }
+
+            if (!terms) {
+                document.getElementById("termsError").innerHTML = "You must agree to the terms and conditions";
+                valid = false;
+            }
+
+            return valid;
+        }
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="logo">
+            <img src="AQI.png" alt="AQI Logo">
+        </div>
+        <h1>Air Quality Index</h1>
+
+        <div class="container">
+            <div class="left white-box">
+                <div class="box1 white-box">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>City</th>
+                                <th>AQI Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Dhaka</td><td>--</td></tr>
+                            <tr><td>Chattagram</td><td>--</td></tr>
+                            <tr><td>Khulna</td><td>--</td></tr>
+                            <tr><td>Rangpur</td><td>--</td></tr>
+                            <tr><td>Rajshahi</td><td>--</td></tr>
+                            <tr><td>Barishal</td><td>--</td></tr>
+                            <tr><td>Comilla</td><td>--</td></tr>
+                            <tr><td>Sylhet</td><td>--</td></tr>
+                            <tr><td>Mymensingh</td><td>--</td></tr>
+                            <tr><td>Jessore</td><td>--</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box2 white-box">Box 2</div>
+            </div>
+
+            <div class="right white-box">
+                <div class="box3 white-box">
+                    <form action="submit.php" method="POST" onsubmit="return validateForm()">
+                        <div class="error" id="fnameError"></div>
+                        <label for="fname">Full Name</label>
+                        <input type="text" id="fname" name="fname">
+
+                        <div class="error" id="emailError"></div>
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email">
+
+                        <div class="error" id="passwordError"></div>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password">
+
+                        <div class="error" id="confirmPasswordError"></div>
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password">
+
+                        <div class="error" id="locationError"></div>
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location">
+
+                        <div class="error" id="zipError"></div>
+                        <label for="zip">Zip Code</label>
+                        <input type="text" id="zip" name="zip">
+
+                        <div class="error" id="cityError"></div>
+                        <label for="city">Preferred City</label>
+                        <select id="city" name="city">
+                            <option value="">Select City</option>
+                            <option value="dhaka">Dhaka</option>
+                            <option value="ctg">Chattagram</option>
+                            <option value="khulna">Khulna</option>
+                            <option value="rangpur">Rangpur</option>
+                            <option value="rajshahi">Rajshahi</option>
+                            <option value="barishal">Barishal</option>
+                            <option value="comilla">Comilla</option>
+                        </select>
+
+                        <div class="error" id="termsError"></div>
+                        <input type="checkbox" id="terms" name="terms">
+                        <label for="terms"> I agree to the terms and conditions</label><br>
+
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+
+                <div class="box4 white-box">Box 4</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

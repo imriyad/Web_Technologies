@@ -1,0 +1,31 @@
+.city-aqi-table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+.city-aqi-table th, .city-aqi-table td {
+    border: 1px solid #ccc;
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.city-aqi-table th {
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+}
+
+.city-aqi-table td {
+    font-size: 16px;
+    color: #333;
+}
+
+.city-aqi-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.city-aqi-table tr:hover {
+    background-color: #f1f1f1;
+}
+
