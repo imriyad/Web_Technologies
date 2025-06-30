@@ -1,0 +1,471 @@
+
+/* Base Styles */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+  --danger-color: #e74c3c;
+  --info-color: #3498db;
+  --white: #ffffff;
+  --gray-light: #f5f7fa;
+  --gray-medium: #dfe6e9;
+  --gray-dark: #b2bec3;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: var(--dark-color);
+  line-height: 1.6;
+}
+
+/* Layout */
+.wrapper {
+  width: 90%;
+  max-width: 1200px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.left, .right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Header */
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.logo img {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
+h1 {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(to right, #3498db, #2c3e50);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Box Styles */
+.box {
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.box h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.box h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--secondary-color);
+}
+
+/* City AQI Box */
+.city-aqi-box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.city-aqi-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.city-aqi-table th, .city-aqi-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid var(--gray-medium);
+}
+
+.city-aqi-table th {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.city-aqi-table tr:nth-child(even) {
+  background-color: var(--gray-light);
+}
+
+.city-aqi-table tr:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+/* AQI Info Box */
+.aqi-info-box {
+  height: 100%;
+}
+
+.aqi-info-content {
+  margin-top: 15px;
+}
+
+.aqi-scale {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.aqi-level {
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.aqi-level.good {
+  background-color: #27ae60;
+}
+.aqi-level.moderate {
+  background-color: #f1c40f;
+}
+.aqi-level.sensitive {
+  background-color: #e67e22;
+}
+.aqi-level.unhealthy {
+  background-color: #e74c3c;
+}
+.aqi-level.very-unhealthy {
+  background-color: #9b59b6;
+}
+.aqi-level.hazardous {
+  background-color: #7f8c8d;
+}
+
+/* Form Styles */
+.registration-box, .login-box {
+  height: 100%;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--dark-color);
+  font-size: 0.9rem;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--gray-medium);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  background-color: var(--gray-light);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 10px;
+}
+
+.checkbox-group label {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+.error {
+  color: var(--danger-color);
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+  min-height: 18px;
+}
+
+.error-message {
+  color: var(--danger-color);
+  text-align: center;
+  margin: 10px 0;
+  font-size: 0.9rem;
+}
+
+/* Button Styles */
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-submit {
+  background-color: var(--success-color);
+  color: var(--white);
+}
+
+.btn-submit:hover {
+  background-color: #219653;
+}
+
+.btn-login {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+.btn-login:hover {
+  background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .aqi-scale {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    width: 95%;
+    padding: 10px;
+  }
+  
+  .box {
+    padding: 15px;
+  }
+  
+  .aqi-scale {
+    grid-template-columns: 1fr;
+  }
+}
+/* AQI Info Box Styles */
+.aqi-info-box {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.aqi-info-box h3 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.aqi-info-box h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, #3498db, #2ecc71);
+}
+
+.aqi-description p {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.aqi-key-points {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.key-point {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  color: #34495e;
+  font-weight: 500;
+}
+
+.key-point i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  color: #3498db;
+}
+
+.aqi-scale-container {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: auto;
+}
+
+.aqi-scale-container h4 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.aqi-scale {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.aqi-level {
+  border-radius: 10px;
+  padding: 15px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.aqi-level:hover {
+  transform: translateY(-5px);
+}
+
+.level-range {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.level-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.level-desc {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+/* AQI Level Colors */
+.aqi-level.good {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+}
+.aqi-level.moderate {
+  background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+}
+.aqi-level.sensitive {
+  background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+}
+.aqi-level.unhealthy {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+}
+.aqi-level.very-unhealthy {
+  background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+}
+.aqi-level.hazardous {
+  background: linear-gradient(135deg, #7f8c8d 0%, #34495e 100%);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .aqi-scale {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .aqi-key-points {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .aqi-scale {
+    grid-template-columns: 1fr;
+  }
+  
+  .aqi-info-box {
+    padding: 20px;
+  }
+}

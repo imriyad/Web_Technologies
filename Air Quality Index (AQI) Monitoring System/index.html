@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Quality Index Monitoring</title>
+  <link rel="stylesheet" href="AQI.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script>
+    function clearErrors() {
+      document.querySelectorAll('.error').forEach(e => e.innerHTML = "");
+    }
+
+    function validateForm() {
+      clearErrors();
+      let valid = true;
+
+      const fname = document.getElementById("fname").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm_password").value;
+      const location = document.getElementById("location").value;
+      const zip = document.getElementById("zip").value;
+      const city = document.getElementById("city").value;
+      const terms = document.getElementById("terms").checked;
+
+      const namePattern = /^[A-Za-z.\s]+$/;
+      const zipPattern = /^\d{4}$/;
+      const aiubEmailPattern = /^\d{2}-\d{5}-[1-3]@student\.aiub\.edu$/;
+
+      if (fname.trim() === "") {
+        document.getElementById("fnameError").innerHTML = "Full Name must be filled out";
+        valid = false;
+      } else if (!namePattern.test(fname)) {
+        document.getElementById("fnameError").innerHTML = "Invalid Name";
+        valid = false;
+      }
+
+      if (email.trim() === "") {
+        document.getElementById("emailError").innerHTML = "Email must be filled out";
+        valid = false;
+      } else if (!aiubEmailPattern.test(email)) {
+        document.getElementById("emailError").innerHTML = "Enter a valid AIUB student email (e.g., 22-12345-1@student.aiub.edu)";
+        valid = false;
+      }
+
+      if (password === "") {
+        document.getElementById("passwordError").innerHTML = "Missing Password";
+        valid = false;
+      } else if (password.length < 8) {
+        document.getElementById("passwordError").innerHTML = "Password must be at least 8 characters";
+        valid = false;
+      }
+
+      if (confirmPassword === "") {
+        document.getElementById("confirmPasswordError").innerHTML = "Please confirm your password";
+        valid = false;
+      } else if (password !== confirmPassword) {
+        document.getElementById("confirmPasswordError").innerHTML = "Passwords do not match";
+        valid = false;
+      }
+
+      if (location.trim() === "") {
+        document.getElementById("locationError").innerHTML = "Location must be filled out";
+        valid = false;
+      }
+
+      if (zip.trim() === "") {
+        document.getElementById("zipError").innerHTML = "Zip Code must be filled out";
+        valid = false;
+      } else if (!zipPattern.test(zip)) {
+        document.getElementById("zipError").innerHTML = "Zip Code must be exactly 4 digits";
+        valid = false;
+      }
+
+      if (city === "") {
+        document.getElementById("cityError").innerHTML = "Please select a city";
+        valid = false;
+      }
+
+      if (!terms) {
+        document.getElementById("termsError").innerHTML = "You must agree to the terms and conditions";
+        valid = false;
+      }
+
+      return valid;
+    }
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="logo">
+      <img src="AQI.png" alt="AQI Logo">
+    </div>
+    <h1>AIR QUALITY INDEX</h1>
+
+    <div class="container">
+      <div class="left">
+        <div class="box city-aqi-box">
+          <h3>CURRENT AQI LEVELS</h3>
+          <table class="city-aqi-table">
+            <thead>
+              <tr><th>City</th><th>AQI Level</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Dhaka</td><td>--</td></tr>
+              <tr><td>Chattagram</td><td>--</td></tr>
+              <tr><td>Khulna</td><td>--</td></tr>
+              <tr><td>Rangpur</td><td>--</td></tr>
+              <tr><td>Rajshahi</td><td>--</td></tr>
+              <tr><td>Barishal</td><td>--</td></tr>
+              <tr><td>Comilla</td><td>--</td></tr>
+              <tr><td>Sylhet</td><td>--</td></tr>
+              <tr><td>Mymensingh</td><td>--</td></tr>
+              <tr><td>Jessore</td><td>--</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="box aqi-info-box">
+          <h3>ABOUT AIR QUALITY INDEX</h3>
+          <div class="aqi-info-content">
+            <div class="aqi-description">
+              <p>The Air Quality Index (AQI) is a measurement system used to assess and communicate how polluted the air currently is or how polluted it is forecast to become. The AQI scale ranges from 0 to 500, where lower values indicate cleaner air and higher values represent increasing health risks.</p>
+              <div class="aqi-key-points">
+                <div class="key-point">
+                  <i class="fas fa-lungs"></i>
+                  <span>Measures key air pollutants</span>
+                </div>
+                <div class="key-point">
+                  <i class="fas fa-heartbeat"></i>
+                  <span>Indicates health implications</span>
+                </div>
+                <div class="key-point">
+                  <i class="fas fa-bell"></i>
+                  <span>Provides pollution alerts</span>
+                </div>
+              </div>
+            </div>
+            <div class="aqi-scale-container">
+              <h4>AQI SCALE & HEALTH IMPLICATIONS</h4>
+              <div class="aqi-scale">
+                <div class="aqi-level good">
+                  <div class="level-range">0 - 50</div>
+                  <div class="level-name">Good</div>
+                  <div class="level-desc">Air quality is satisfactory</div>
+                </div>
+                <div class="aqi-level moderate">
+                  <div class="level-range">51 - 100</div>
+                  <div class="level-name">Moderate</div>
+                  <div class="level-desc">Acceptable quality</div>
+                </div>
+                <div class="aqi-level sensitive">
+                  <div class="level-range">101 - 150</div>
+                  <div class="level-name">Unhealthy for Sensitive Groups</div>
+                  <div class="level-desc">Risk for some people</div>
+                </div>
+                <div class="aqi-level unhealthy">
+                  <div class="level-range">151 - 200</div>
+                  <div class="level-name">Unhealthy</div>
+                  <div class="level-desc">Health effects for everyone</div>
+                </div>
+                <div class="aqi-level very-unhealthy">
+                  <div class="level-range">201 - 300</div>
+                  <div class="level-name">Very Unhealthy</div>
+                  <div class="level-desc">Health warnings</div>
+                </div>
+                <div class="aqi-level hazardous">
+                  <div class="level-range">300+</div>
+                  <div class="level-name">Hazardous</div>
+                  <div class="level-desc">Emergency conditions</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- .left -->
+
+      <div class="right">
+        <div class="box registration-box">
+          <form action="submit.php" method="POST" onsubmit="return validateForm()">
+            <h3>REGISTER</h3>
+            <div class="form-group">
+              <div class="error" id="fnameError"></div>
+              <label for="fname">Full Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Enter your full name">
+            </div>
+
+            <div class="form-group">
+              <div class="error" id="emailError"></div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="e.g. 22-12345-1@student.aiub.edu">
+            </div>
+
+            <div class="form-group">
+              <div class="error" id="passwordError"></div>
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" placeholder="Create a password">
+            </div>
+
+            <div class="form-group">
+              <div class="error" id="confirmPasswordError"></div>
+              <label for="confirm_password">Confirm Password</label>
+              <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password">
+            </div>
+
+            <div class="form-group">
+              <div class="error" id="locationError"></div>
+              <label for="location">Location</label>
+              <input type="text" id="location" name="location" placeholder="Enter your location">
+            </div>
+
+            <div class="form-group">
+              <div class="error" id="zipError"></div>
+              <label for="zip">Zip Code</label>
+              <input type="text" id="zip" name="zip" placeholder="4-digit zip code">
+            </div>
+
+            <div class="form-group">
+              <div class="error" id="cityError"></div>
+              <label for="city">Preferred City</label>
+              <select id="city" name="city">
+                <option value="">Select City</option>
+                <option value="dhaka">Dhaka</option>
+                <option value="ctg">Chattagram</option>
+                <option value="khulna">Khulna</option>
+                <option value="rangpur">Rangpur</option>
+                <option value="rajshahi">Rajshahi</option>
+                <option value="barishal">Barishal</option>
+                <option value="comilla">Comilla</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <div class="error" id="colorError"></div>
+              <label for="favoriteColor">Favorite Color</label>
+              <input type="color" name="color" value="#000000" required title="Choose your favorite color">
+            </div>
+
+            <div class="form-group checkbox-group">
+              <div class="error" id="termsError"></div>
+              <input type="checkbox" id="terms" name="terms">
+              <label for="terms"> I agree to the terms and conditions</label>
+            </div>
+
+            <button type="submit" class="btn-submit">Register</button>
+          </form>
+        </div>
+
+        <div class="box login-box">
+          <form action="login.php" method="POST">
+            <h3>LOGIN</h3>
+            <div class="form-group">
+              <label for="loginEmail">Email</label>
+              <input type="email" id="loginEmail" name="loginEmail" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="loginPassword">Password</label>
+              <input type="password" id="loginPassword" name="loginPassword" placeholder="Enter your password" required>
+            </div>
+
+            <div id="error" class="error-message"></div>
+
+            <button type="submit" class="btn-login">Login</button>
+          </form>
+        </div>
+      </div> <!-- .right -->
+    </div> <!-- .container -->
+  </div> <!-- .wrapper -->
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const error = params.get("error");
+
+    if (error) {
+      document.getElementById("error").textContent = decodeURIComponent(error);
+      const newUrl = window.location.origin + window.location.pathname;
+      window.history.replaceState({}, document.title, newUrl);
+    }
+  </script>
+</body>
+</html>
